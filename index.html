@@ -34,8 +34,9 @@
                     }
                     
                     iabRef = window.open(url, "_blank", "location=yes");
+                    iabRef = cordova.InAppBrowser.open('http://www.brownys-mantrailer.de', '_blank', 'location=yes');
                     iabRef.addEventListener('loadstart', onLoadStart);
-                    iabRef.addEventListener('loadstart', onLoadStop);
+                    iabRef.addEventListener('loadstop', onLoadStop);
                     iabRef.addEventListener('exit', onExit);
                 
                 } catch (e) {

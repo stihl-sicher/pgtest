@@ -61,10 +61,9 @@
                         url = 'http://' + url;
                     }
                     
-                    iabRef = window.open(url, "_blank", "location=yes");
-                    iabRef = cordova.InAppBrowser.open('http://www.brownys-mantrailer.de', '_blank', 'location=yes');
-                    iabRef.addEventListener('loadstart', onLoadStart);
-                    iabRef.addEventListener('loadstop', onLoadStop);
+                    iabRef = cordova.InAppBrowser.open('http://www.heise.de', '_blank', 'location=yes');
+                  //  iabRef.addEventListener('loadstart', onLoadStart);
+                  //  iabRef.addEventListener('loadstop', onLoadStop);
                     iabRef.addEventListener('exit', onExit);
                 
                 } catch (e) {
@@ -100,8 +99,8 @@
             function onExit(event) {
                 alert(event.type);
                 if (iabRef) {
-                    iabRef.removeEventListener('loadstart', onLoadStart);
-                    iabRef.removeEventListener('loadstart', onLoadStop);
+                  //  iabRef.removeEventListener('loadstart', onLoadStart);
+                  //  iabRef.removeEventListener('loadstop', onLoadStop);
                     iabRef.removeEventListener('exit', onExit);
                     iabRef = null;
                 }

@@ -33,7 +33,7 @@
                         url = 'http://' + url;
                     }
                     
-                    iabRef = window.open(url, target, "location=" + (showLocationbar? "yes":"no"));
+                    iabRef = window.open(url, "_blank", "location=yes");
                     iabRef.addEventListener('loadstart', onLoadStart);
                     iabRef.addEventListener('loadstart', onLoadStop);
                     iabRef.addEventListener('exit', onExit);

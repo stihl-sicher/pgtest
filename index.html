@@ -69,23 +69,10 @@ function testSQ() {
 
 
         </script>
-				<div id="sqlite_ergebnis" style="height:60px; width:100%; background-color:rgba(0,255,255,0.3);">
+				<div id="sqlite_ergebnis" style="min-height:60px; width:100%; background-color:rgba(0,255,255,0.3);">
 				</div>
         <div style="margin-left:10px">
-            <div style="margin-top:20px">
-                <input type="radio" name="windowName" value="_self" />_self
-                <input type="radio" name="windowName" value="_blank" checked="checked" />_blank
-                <input type="radio" name="windowName" value="_system">_system
-            </div>
-            <div>
-                <input type="checkbox" id="windowOptions"/>Show location bar?
-            </div>
-            <div>
-                <input id="windowUrl" placeholder="Enter a url" onkeyup="checkUrlLength()" style="width:80%" type="text" id="windowUrl" value="www.google.com"/>
-            </div>
             <button id="launchButton" onclick="testSQ();">SQLite</button>
-
-            <a style="font-size:2rem;" href="http://www.brownys-mantrailer.de" target="_blank">TestLink</a>
         </div>
 
 	</BODY>

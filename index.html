@@ -70,12 +70,14 @@ function testSQ() {
 	}*/
 
 try {
+	document.getElementById("sqlite_ergebnis").innerHTML = "Öffenen DB<br>";
 	window.sqlitePlugin.openDatabase({name: "my.db"}, function(db) {
+			document.getElementById("sqlite_ergebnis").innerHTML = "DB geöffnet<br>";
 	  	db.query('SELECT * from mandant', function(err, res) {
 				if (err) {
-					document.getElementById("sqlite_ergebnis").innerHTML += err;
+					document.getElementById("sqlite_ergebnis").innerHTML += err+"<br>";
 				}
-				document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
+				document.getElementById("sqlite_ergebnis").innerHTML += "Abfrageergebnis: "+res.rows[0].solution;
 			});
 	  });
 

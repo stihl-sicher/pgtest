@@ -74,7 +74,7 @@ try {
 	window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 			db.transaction(function(tx) {
-			  tx.executeSql("SELECT * from mandant", [], function(tx, res) {
+			  tx.executeSql("SELECT * from foi", [], function(tx, res) {
 			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			  }, function(error) {
 			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
@@ -98,6 +98,7 @@ try {
 
 
         </script>
+				<img src="testbild.png" />
 				<div id="sqlite_ergebnis" style="min-height:60px; width:100%; background-color:rgba(0,255,255,0.3);">
 				</div>
         <div style="margin-left:10px">

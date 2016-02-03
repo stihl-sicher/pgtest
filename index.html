@@ -53,10 +53,12 @@
 
 var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
 function testSQ() {}
+	document.getElementById("sqlite_ergebnis").innerHTML = "Start<br>";
 	var sqlite = new SQLite('example');
   try {
-		document.getElementById("sqlite_ergebnis").innerHTML = ""
+		document.getElementById("sqlite_ergebnis").innerHTML += "DB angelegt<br>";
 		sqlite.open(function(err) {
+			
 		  if (err) throw err;
 		  sqlite.query('SELECT ? + ? AS solution', [2, 3], function(err, res) {
 		    if (err) throw err;

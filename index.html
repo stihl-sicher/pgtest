@@ -70,7 +70,7 @@ function testSQ() {
 	}*/
 
 
-/***** cordova-sqlite-storage
+/***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
 	window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
@@ -93,8 +93,8 @@ try {
 	document.getElementById("sqlite_ergebnis").innerHTML += e;
 }
 
-*/
 
+/*
 var db = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1});
 
 document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
@@ -110,7 +110,7 @@ db.transaction(function(tx) {
 	document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
 });
 
-
+*/
 }
 
 

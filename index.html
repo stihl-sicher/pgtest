@@ -70,7 +70,7 @@ function testSQ() {
 	}*/
 
 
-/***** cordova-sqlite-storage */
+/***** cordova-sqlite-storage *//*
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
 	window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
@@ -91,26 +91,27 @@ try {
 
 } catch(e) {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Catch: "+e;
+}*/
+
+	try {
+		document.getElementById("sqlite_ergebnis").innerHTML += "DB öffnen<br>"
+		var db = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1});
+		document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
+		db.transaction(function(tx) {
+			tx.executeSql("SELECT * from foi", [], function(tx, res) {
+				document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
+			}, function(error) {
+				document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
+			});
+		}, function(error) {
+			document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
+		}, function() {
+			document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
+		});
+} catch (e) {
+	document.getElementById("sqlite_ergebnis").innerHTML += "Catch: "+e;
 }
 
-
-/*
-var db = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1});
-
-document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
-db.transaction(function(tx) {
-	tx.executeSql("SELECT * from foi", [], function(tx, res) {
-		document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
-	}, function(error) {
-		document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
-	});
-}, function(error) {
-	document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
-}, function() {
-	document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
-});
-
-*/
 }
 
 

@@ -54,7 +54,7 @@ function testSQ() {
 
   try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB angelegt<br>";
-		if (sqlite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} )) {
+		 var sqlite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} );
 //		sqlite.open(function(err) {
 				document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 	//	  if (err) throw err;
@@ -62,7 +62,6 @@ function testSQ() {
 		    if (err) throw err;
 		    document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
 		  });
-		});
 	} catch (e) {
 				document.getElementById("sqlite_ergebnis").innerHTML += e;
 	}

@@ -52,17 +52,20 @@
             var iabRef = null;
 
 var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
-
-var sqlite = new SQLite('example');
+function testSQ() {}
+	var sqlite = new SQLite('example');
   try {
-sqlite.open(function(err) {
-  if (err) throw err;
-  sqlite.query('SELECT ? + ? AS solution', [2, 3], function(err, res) {
-    if (err) throw err;
-    document.getElementById("sqlite_ergebnis").innerHTML = "Ergebnis von 2 + 3 = "+res.rows[0].solution;
-  });
-});} catch (e) {
-		document.getElementById("sqlite_ergebnis").innerHTML = e;
+		document.getElementById("sqlite_ergebnis").innerHTML = ""
+		sqlite.open(function(err) {
+		  if (err) throw err;
+		  sqlite.query('SELECT ? + ? AS solution', [2, 3], function(err, res) {
+		    if (err) throw err;
+		    document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
+		  });
+		});
+	} catch (e) {
+				document.getElementById("sqlite_ergebnis").innerHTML += e;
+	}
 }
             function launchUrl() {
                 try {
@@ -134,7 +137,7 @@ sqlite.open(function(err) {
             <div>
                 <input id="windowUrl" placeholder="Enter a url" onkeyup="checkUrlLength()" style="width:80%" type="text" id="windowUrl" value="www.google.com"/>
             </div>
-            <button id="launchButton" onclick="launchUrl()">Launch InAppBrowser</button>
+            <button id="launchButton" onclick="testSQ()">SQLite</button>
 
             <a style="font-size:2rem;" href="http://www.brownys-mantrailer.de" target="_blank">TestLink</a>
         </div>

@@ -54,14 +54,16 @@
 var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
 
 var sqlite = new SQLite('example');
-
+  try {
 sqlite.open(function(err) {
   if (err) throw err;
   sqlite.query('SELECT ? + ? AS solution', [2, 3], function(err, res) {
     if (err) throw err;
-    docuemnt.getElementById("sqlite_ergebnis").innerHTML = "Ergebnis von 2 + 3 = "+res.rows[0].solution;
+    document.getElementById("sqlite_ergebnis").innerHTML = "Ergebnis von 2 + 3 = "+res.rows[0].solution;
   });
-});
+});} catch (e) {
+		document.getElementById("sqlite_ergebnis").innerHTML = e;
+}
             function launchUrl() {
                 try {
                     var url = document.getElementById("windowUrl").value;

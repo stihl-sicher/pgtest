@@ -59,9 +59,9 @@ sqlite.open(function(err) {
   if (err) throw err;
   sqlite.query('SELECT ? + ? AS solution', [2, 3], function(err, res) {
     if (err) throw err;
-    console.log(res.rows[0].solution);
+    docuemnt.getElementById("sqlite_ergebnis").innerHTML = "Ergebnis von 2 + 3 = "+res.rows[0].solution;
   });
-});            
+});
             function launchUrl() {
                 try {
                     var url = document.getElementById("windowUrl").value;
@@ -118,6 +118,8 @@ sqlite.open(function(err) {
             }
 
         </script>
+				<div id="sqlite_ergebnis">
+				</div>
         <div style="margin-left:10px">
             <div style="margin-top:20px">
                 <input type="radio" name="windowName" value="_self" />_self

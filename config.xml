@@ -78,7 +78,7 @@
     <!--gap:plugin name="cordova-sqlite-plugin" source="npm" /-->
     <!--gap:plugin name="cordova-sqlite-storage" source="npm" /-->
 
-    <gap:plugin name="Cordova-SQLitePlugin" source="npm" />
+    <gap:plugin name="cordova-plugin-sqlite" source="npm" />
 
 <!--    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />-->
 

@@ -69,21 +69,19 @@ function testSQ() {
 				document.getElementById("sqlite_ergebnis").innerHTML += e;
 	}*/
 
-/*
+try {
 	window.sqlitePlugin.openDatabase({name: "my.db"}, function(db) {
-	  db.transaction(function(tx) {
-			db.query('SELECT * from mandant', function(err, res) {
+	  	db.query('SELECT * from mandant', function(err, res) {
 				if (err) {
 					document.getElementById("sqlite_ergebnis").innerHTML += err;
 				}
 				document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
 			});
-	  }, function(err) {
-	    document.getElementById("sqlite_ergebnis").innerHTML += JSON.stringify(err));
 	  });
-	});
 
-*/
+} catch(e) {
+	document.getElementById("sqlite_ergebnis").innerHTML += e;
+}
 
 
 

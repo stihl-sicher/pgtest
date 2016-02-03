@@ -71,7 +71,7 @@ function testSQ() {
 
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
-	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
+	window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 			db.transaction(function(tx) {
 			  tx.executeSql("SELECT * from mandant", [], function(tx, res) {
@@ -84,7 +84,7 @@ try {
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
 			});
-						
+
 	  });
 
 } catch(e) {

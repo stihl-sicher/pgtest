@@ -51,10 +51,11 @@
 
             var iabRef = null;
 
-var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
+
 function testSQ() {}
   alert("passiert");
 	document.getElementById("sqlite_ergebnis").innerHTML = "Start<br>";
+	var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
 	var sqlite = new SQLite('example');
   try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB angelegt<br>";
@@ -140,7 +141,7 @@ function testSQ() {}
             <div>
                 <input id="windowUrl" placeholder="Enter a url" onkeyup="checkUrlLength()" style="width:80%" type="text" id="windowUrl" value="www.google.com"/>
             </div>
-            <button id="launchButton" onclick="testSQ()">SQLite</button>
+            <button id="launchButton" onclick="testSQ();">SQLite</button>
 
             <a style="font-size:2rem;" href="http://www.brownys-mantrailer.de" target="_blank">TestLink</a>
         </div>

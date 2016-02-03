@@ -49,7 +49,9 @@ function testSQ() {
   alert("passiert");
 	document.getElementById("sqlite_ergebnis").innerHTML = "Start<br>";
 	var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
-	var sqlite = new SQLite('example');
+	//var sqlite = new SQLite('example');
+	var SQLite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} );
+
   try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB angelegt<br>";
 		sqlite.open(function(err) {

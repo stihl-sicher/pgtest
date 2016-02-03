@@ -71,18 +71,20 @@ function testSQ() {
 
 
 
-	  var sqlite = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
+	  var sqlite = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1},
+			function(db) {
 				document.getElementById("sqlite_ergebnis").innerHTML = "DB geöffnet<br>";
-			sqlite.query('SELECT * from mandant', function(err, res) {
-				if (err) {
-					document.getElementById("sqlite_ergebnis").innerHTML += err;
-				}
-				document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
-			});
-  	}, function(err) {
+				db.query('SELECT * from mandant', function(err, res) {
+					if (err) {
+						document.getElementById("sqlite_ergebnis").innerHTML += err;
+					}
+					document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
+				});
+  	},
+		function(err) {
     	document.getElementById("sqlite_ergebnis").innerHTML += "Fehler: "+ JSON.stringify(err));
-  });
-);
+  	});
+
 
 
 

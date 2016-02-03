@@ -48,11 +48,11 @@
 function testSQ() {
   alert("passiert");
 	document.getElementById("sqlite_ergebnis").innerHTML = "Start<br>";
-	var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
-	var sqlite = new SQLite('mapone.db');
+//	var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
+//	var sqlite = new SQLite('mapone.db');
 	//var SQLite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} );
 
-  try {
+/*  try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB angelegt<br>";
 		 //var sqlite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} );
 		sqlite.open(function(err) {
@@ -67,7 +67,22 @@ function testSQ() {
 		});
 	} catch (e) {
 				document.getElementById("sqlite_ergebnis").innerHTML += e;
+	}*/
+
+
+
+	  var sqlite = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1});
+		sqlite.query('SELECT * from mandant', function(err, res) {
+			if (err) {
+				document.getElementById("sqlite_ergebnis").innerHTML += err;
+			}
+			document.getElementById("sqlite_ergebnis").innerHTML += "Ergebnis von 2 + 3 = "+res.rows[0].solution;
+		});
+
 	}
+
+
+
 }
 
 

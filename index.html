@@ -71,7 +71,7 @@ function testSQ() {
 				document.getElementById("sqlite_ergebnis").innerHTML += e;
 	}*/
 
-var installed = true;
+var installed = false;
 /***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
@@ -83,8 +83,8 @@ try {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
 					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
-							if (res.rows.length == 0) {
-								installed = false;
+							if (res.rows.length > -1) {
+								installed = true;
 							}
 				  }, function(error) {
 				    installed = false;

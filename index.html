@@ -83,11 +83,11 @@ try {
 
 				}
 
-			  tx.executeSql("SELECT ? + ? as result", [2,3], function(tx, res) {
+			  tx.executeSql("SELECT 1 as result", [], function(tx, res) {
 			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			  }, function(error) {
 			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
-			  });*/
+			  });
 			}, function(error) {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 			}, function() {

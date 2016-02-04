@@ -9,7 +9,8 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale=1, user-scalable=0" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<script src="cordova.js"></script>
-	<script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script>
+	<script src="dbinit.js"></script>
+	<!--script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script-->
 	<style type="text/css">
 			.inAppBrowserWrap {
   background-color: rgba(0,0,0,0.75);
@@ -71,13 +72,22 @@ function testSQ() {
 	}*/
 
 
-/***** cordova-sqlite-storage *//*
+/***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
-	window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1}, function(db) {
+	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 			db.transaction(function(tx) {
-			  tx.executeSql("SELECT * from foi", [], function(tx, res) {
+				for (var a = 0; a < initialStatements.length; a++) {
+				tx.executeSql(initialStatements[a], [], function(tx, res) {
+			    document.getElementById("sqlite_ergebnis").innerHTML +="1 row affected<br>";
+			  }, function(error) {
+			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
+			  });
+			}
+
+
+				tx.executeSql("SELECT * from foi", [], function(tx, res) {
 			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			  }, function(error) {
 			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
@@ -92,8 +102,8 @@ try {
 
 } catch(e) {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Catch: "+e;
-}*/
-
+}
+/*
 	try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB öffnen<br>"
 		if (window.sqlitePlugin) {
@@ -119,7 +129,7 @@ try {
 } catch (e) {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Catch: "+e;
 }
-
+*/
 }
 
 

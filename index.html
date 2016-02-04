@@ -10,7 +10,6 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<script src="cordova.js"></script>
 	<script src="dbinit.js"></script>
-	<!--script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script-->
 	<style type="text/css">
 			.inAppBrowserWrap {
   background-color: rgba(0,0,0,0.75);
@@ -50,6 +49,7 @@
 function testSQ() {
   alert("passiert");
 	document.getElementById("sqlite_ergebnis").innerHTML = "Start<br>";
+	alert("gestartet");
 //	var SQLite = window.cordova.require('cordova-sqlite-plugin.SQLite');
 //	var sqlite = new SQLite('mapone.db');
 	//var SQLite = window.sqlitePlugin.openDatabase( {name: "mapone.db", createFromLocation: 1} );
@@ -90,7 +90,7 @@ try {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
 			});
 */
-
+/*
 for (var a =0; a < initialStatements.length; a++) {
 	document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
 	if ((a % 100) == 0) {
@@ -98,7 +98,7 @@ for (var a =0; a < initialStatements.length; a++) {
 	}
 
 }
-
+*/
 
 
 			/*db.transaction(function(tx) {

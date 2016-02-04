@@ -92,10 +92,12 @@ try {
 
 			}, function(error) {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
+				installed = false;
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='installation check ok: '+installed+"<br>";
 			});
 
+			document.getElementById("sqlite_ergebnis").innerHTML += "Status: "+installed+"<br>";
 			if (!installed) {
 			db.transaction(function(tx) {
 				for (var a =b; a < initialStatements.length ; a++) {

@@ -102,7 +102,7 @@ try {
 		if (window.SQLitePlugin) {
 				document.getElementById("sqlite_ergebnis").innerHTML += "SQLitePlugin<br>"
 		}
-		var db = window.sqlitePlugin.openDatabase({name: "test.db"});
+		var db = window.SQLitePlugin.openDatabase({name: "test.db"});
 		//var db = window.sqlitePlugin.openDatabase({name: "my.db", createFromLocation: 1});
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 		db.transaction(function(tx) {

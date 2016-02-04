@@ -71,7 +71,7 @@ function testSQ() {
 				document.getElementById("sqlite_ergebnis").innerHTML += e;
 	}*/
 
-
+var installed = true;
 /***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
@@ -81,6 +81,22 @@ try {
 		document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig";
 	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
+			db.transaction(function(tx) {
+					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
+							if (res.rows.length == 0) {
+								installed = false;
+							}
+				  }, function(error) {
+				    installed = false;
+				  });
+
+			}, function(error) {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
+			}, function() {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='installation check ok: '+installed+"<br>";
+			});
+
+			if (!installed) {
 			db.transaction(function(tx) {
 				for (var a =b; a < initialStatements.length ; a++) {
 					var sqlstatement = initialStatements[a];
@@ -98,11 +114,11 @@ try {
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok '+b+" Eingefügt<br>";
 			});
-
+		}
 
 			db.transaction(function(tx) {
 					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
-							document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
+							document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + JSON.stringify(res.rows.item(0))+"<br>";
 				  }, function(error) {
 				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 				  });
@@ -110,7 +126,7 @@ try {
 			}, function(error) {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 			}, function() {
-			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok '+b+" Eingefügt<br>";
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok <br>';
 			});
 
 

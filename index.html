@@ -9,6 +9,7 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale=1, user-scalable=0" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<script src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script>
 	<style type="text/css">
 			.inAppBrowserWrap {
   background-color: rgba(0,0,0,0.75);
@@ -96,6 +97,7 @@ try {
 	try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB öffnen<br>"
 		var db = window.sqlitePlugin.openDatabase({name: "test.db"});
+		var db = window.sqlitePlugin.openDatabase({name: "my.db", createFromLocation: 1});
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 		db.transaction(function(tx) {
 			tx.executeSql("SELECT 'hallo Welt' as meintext", [], function(tx, res) {

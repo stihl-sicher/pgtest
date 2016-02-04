@@ -76,19 +76,28 @@ function testSQ() {
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
 	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
-			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
+			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
-				for (var a = 0; a < initialStatements.length; a++) {
-				/*tx.executeSql(initialStatements[a], [], function(tx, res) {
-			  //  document.getElementById("sqlite_ergebnis").innerHTML +="1 row affected<br>";
+				for (var a =0; a < initialStatements.length; a++) {
+					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
+
+				}
+
+			  tx.executeSql("SELECT ? + ? as result", [2,3], function(tx, res) {
+			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			  }, function(error) {
 			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 			  });*/
-				document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
-			}
-			document.getElementById("sqlite_ergebnis").innerHTML += "populated<br>"
+			}, function(error) {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
+			}, function() {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
+			});
 
-				tx.executeSql("SELECT * from foi", [], function(tx, res) {
+
+
+			/*db.transaction(function(tx) {
+			  tx.executeSql("SELECT * from foi", [], function(tx, res) {
 			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			  }, function(error) {
 			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
@@ -97,7 +106,7 @@ try {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
-			});
+			});*/
 
 	  });
 

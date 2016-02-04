@@ -85,12 +85,13 @@ try {
 				for (var a =b; a < b+20; a++) {
 //					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
 					var sqlstatement = initialStatements[a];
+					if (sqlstatement !== null) {
 					tx.executeSql(sqlstatement, [], function(tx, res) {
 	//			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 				  }, function(error) {
 				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 				  });
-
+				}
 				}
 				b = a;
 

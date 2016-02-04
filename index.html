@@ -79,7 +79,7 @@ try {
 
 
 		document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig<br>";
-	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
+	window.sqlitePlugin.openDatabase({name: "mapone.db", location:3}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
 					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
@@ -131,7 +131,7 @@ try {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok <br>';
 			});
 
-
+			db.close();
 
 	  });
 

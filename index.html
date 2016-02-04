@@ -76,46 +76,36 @@ function testSQ() {
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
 		document.getElementById("sqlite_ergebnis").innerHTML += initialStatements.length + "<br>";
-/*	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
+
+
+		document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig";
+	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
+				for (var a =b; a < b+100; a++) {
+					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
+					var sqlstatement = initialStatements[a];
+					tx.executeSql(sqlstatement, [], function(tx, res) {
+				    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
+				  }, function(error) {
+				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
+				  });
 
-			  tx.executeSql("SELECT 1 as result", [], function(tx, res) {
-			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
-			  }, function(error) {
-			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
-			  });
+				}
+				b = a;
+
 			}, function(error) {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
 			});
-*/
 
-for (var a =b; a < b+100; a++) {
-	document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
-//	if ((a % 100) == 0) {
-//		alert("100 weitere");
-//	}
 
-}
-b = a;
 
-document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig";
 
-			/*db.transaction(function(tx) {
-			  tx.executeSql("SELECT * from foi", [], function(tx, res) {
-			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
-			  }, function(error) {
-			    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
-			  });
-			}, function(error) {
-			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
-			}, function() {
-			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
-			});*/
 
-	//  });
+
+	  });
 
 } catch(e) {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Catch: "+e;

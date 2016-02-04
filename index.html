@@ -75,13 +75,9 @@ function testSQ() {
 /***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
-	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
+/*	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
-				for (var a =0; a < initialStatements.length; a++) {
-					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
-
-				}
 
 			  tx.executeSql("SELECT 1 as result", [], function(tx, res) {
 			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
@@ -93,6 +89,15 @@ try {
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
 			});
+*/
+
+for (var a =0; a < initialStatements.length; a++) {
+	document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
+	if ((a % 100) == 0) {
+		alert("100 weitere");
+	}
+
+}
 
 
 

@@ -75,6 +75,7 @@ function testSQ() {
 /***** cordova-sqlite-storage */
 try {
 	document.getElementById("sqlite_ergebnis").innerHTML += "Öffenen DB<br>";
+		document.getElementById("sqlite_ergebnis").innerHTML += initialStatements.length + "<br>";
 /*	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {

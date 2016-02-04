@@ -78,7 +78,7 @@ try {
 		document.getElementById("sqlite_ergebnis").innerHTML += initialStatements.length + "<br>";
 
 
-		document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig";
+		document.getElementById("sqlite_ergebnis").innerHTML += b+" fertig<br>";
 	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
@@ -91,8 +91,8 @@ try {
 				  });
 
 			}, function(error) {
-			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 				installed = false;
+				document.getElementById("sqlite_ergebnis").innerHTML +='transaction error in check: ' + error.message+"<br>";
 			}, function() {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='installation check ok: '+installed+"<br>";
 			});

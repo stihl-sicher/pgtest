@@ -83,17 +83,12 @@ try {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
 				for (var a =b; a < initialStatements.length ; a++) {
-//					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
 					var sqlstatement = initialStatements[a];
 					if (sqlstatement !== null) {
 					tx.executeSql(sqlstatement, [], function(tx, res) {
-	//			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 				  }, function(error) {
 				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 				  });
-				}
-				if ((a % 100) == 0) {
-					document.getElementById("sqlite_ergebnis").innerHTML += a+' fertig'+"<br>";
 				}
 				}
 				b = a;
@@ -105,7 +100,18 @@ try {
 			});
 
 
+			db.transaction(function(tx) {
+					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
+							document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
+				  }, function(error) {
+				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
+				  });
 
+			}, function(error) {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
+			}, function() {
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok '+b+" Eingefügt<br>";
+			});
 
 
 

@@ -82,7 +82,7 @@ try {
 	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
-				for (var a =b; a < b+50; a++) {
+				for (var a =b; a < b+20; a++) {
 //					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
 					var sqlstatement = initialStatements[a];
 					tx.executeSql(sqlstatement, [], function(tx, res) {

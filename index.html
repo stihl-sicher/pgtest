@@ -82,11 +82,11 @@ try {
 	window.sqlitePlugin.openDatabase({name: "mapone.db"}, function(db) {
 			document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>";
 			db.transaction(function(tx) {
-				for (var a =b; a < b+100; a++) {
-					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
+				for (var a =b; a < b+200; a++) {
+//					document.getElementById("sqlite_ergebnis").innerHTML += initialStatements[a]+"<br>";
 					var sqlstatement = initialStatements[a];
 					tx.executeSql(sqlstatement, [], function(tx, res) {
-				    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
+	//			    document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 				  }, function(error) {
 				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 				  });

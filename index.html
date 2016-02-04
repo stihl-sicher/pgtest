@@ -95,10 +95,10 @@ try {
 
 	try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB öffnen<br>"
-		var db = window.sqlitePlugin.openDatabase({name: "mapone.db", createFromLocation: 1});
+		var db = window.sqlitePlugin.openDatabase({name: "test.db"});
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"
 		db.transaction(function(tx) {
-			tx.executeSql("SELECT * from foi", [], function(tx, res) {
+			tx.executeSql("SELECT 'hallo Welt' as meintext", [], function(tx, res) {
 				document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + res.rows.item(0)+"<br>";
 			}, function(error) {
 				document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";

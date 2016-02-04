@@ -96,6 +96,12 @@ try {
 
 	try {
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB öffnen<br>"
+		if (window.sqlitePlugin) {
+				document.getElementById("sqlite_ergebnis").innerHTML += "sqlitePlugin<br>"
+		}
+		if (window.SQLitePlugin) {
+				document.getElementById("sqlite_ergebnis").innerHTML += "SQLitePlugin<br>"
+		}
 		var db = window.sqlitePlugin.openDatabase({name: "test.db"});
 		//var db = window.sqlitePlugin.openDatabase({name: "my.db", createFromLocation: 1});
 		document.getElementById("sqlite_ergebnis").innerHTML += "DB geöffnet<br>"

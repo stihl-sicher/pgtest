@@ -97,7 +97,7 @@ try {
 			}, function(error) {
 			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction error: ' + error.message+"<br>";
 			}, function() {
-			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok'+"<br>";
+			  document.getElementById("sqlite_ergebnis").innerHTML +='transaction ok '+b+" Eingefügt<br>";
 			});
 
 

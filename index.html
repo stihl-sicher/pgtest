@@ -122,6 +122,8 @@ try {
 			db.transaction(function(tx) {
 					tx.executeSql("SELECT * FROM foi", [], function(tx, res) {
 							document.getElementById("sqlite_ergebnis").innerHTML +="Ergebnis: " + JSON.stringify(res.rows.item(0))+"<br>";
+							document.getElementById("sqlite_ergebnis").innerHTML += res.rows.item(0).BEZEICHNUNG +"<br>";
+							document.getElementById("sqlite_ergebnis").innerHTML += res.rows.item(1).BEZEICHNUNG +"<br>";
 				  }, function(error) {
 				    document.getElementById("sqlite_ergebnis").innerHTML += 'SELECT error: ' + error.message+"<br>";
 				  });
